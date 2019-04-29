@@ -15,7 +15,11 @@ export default class App extends Component<Props> {
         <>
           <GlobalStyles />
           <View style={styles.container}>
-            <SideBar horizontal={true}>
+            <SideBar
+              horizontal={false}
+              horizontalSide="bottom"
+              verticalSide="left"
+            >
               <SideBarItem name="home" iconMaterial="home" />
               <SideBarItem
                 name="settings"

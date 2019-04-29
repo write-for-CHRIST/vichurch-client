@@ -5,9 +5,17 @@ import {
 } from '../variables'
 
 export const sharedStyles = {
-  sideBar: {
-    flexGrow: 1,
+  sideBarPosition: {
+    zIndex: 1000,
+    position: 'absolute',
     backgroundColor: '#ccc',
+  },
+  sideBar: {
+    position: 'relative',
+    flexGrow: 1,
+    justifyContent: 'space-between',
+    width: '100%',
+    height: '100%',
   },
   sideBarItem: {
     alignSelf: 'center',
@@ -15,8 +23,10 @@ export const sharedStyles = {
     alignItems: 'center',
     alignContent: 'center',
     width: sidebarSize,
-    height: '100%',
+    height: sidebarSize,
     overflow: 'hidden',
+    paddingLeft: 8,
+    paddingRight: 8,
   },
   sideBarIcon: {
     textAlign: 'center',
