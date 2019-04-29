@@ -1,7 +1,7 @@
 import { useInitStream } from 'bara'
 import { useComponentsStream } from 'bara-react'
 
-import { whenSideBarItemPress } from './components/SideBar'
+import { whenSideBarItemPress } from 'bara-react-yofi'
 import { useWelcome } from './features/welcome'
 
 export const useStreams = () => {

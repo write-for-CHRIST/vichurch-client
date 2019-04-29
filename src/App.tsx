@@ -4,7 +4,7 @@ import { Platform, StyleSheet, Text, View } from 'react-native'
 
 import { Octicons as Icon } from 'bara-react-icons/es'
 
-import { SideBar, SideBarItem } from './components/SideBar'
+import { SideBar, SideBarItem } from 'bara-react-yofi'
 import { GlobalStyles } from './GlobalStyles'
 
 interface Props {}
