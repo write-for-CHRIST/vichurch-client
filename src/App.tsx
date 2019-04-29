@@ -1,43 +1,30 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/emin93/react-native-template-typescript
- *
- * @format
- */
-
 import { BaraProvider, TouchableOpacity } from 'bara-react'
 import React, { Component } from 'react'
 import { Platform, StyleSheet, Text, View } from 'react-native'
 
 import { Octicons as Icon } from 'bara-react-icons/es'
 
-import { Sidebar } from './features/sidebar'
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-})
+import { SideBar, SideBarItem } from './components/SideBar'
+import { GlobalStyles } from './GlobalStyles'
 
 interface Props {}
 export default class App extends Component<Props> {
   render() {
     return (
       <BaraProvider>
-        <View style={styles.container}>
-          <Icon name="chevron-right" size={30} />
-          <Text style={styles.welcome}>Welcome to Bara React Native!</Text>
-          <Text style={styles.instructions}>To get started, edit App.tsx</Text>
-          <Text style={styles.instructions}>{instructions}</Text>
-          <TouchableOpacity name="bara-button">
-            <Text>Bara Button</Text>
-          </TouchableOpacity>
-          <Sidebar />
-        </View>
+        <>
+          <GlobalStyles />
+          <View style={styles.container}>
+            <SideBar horizontal={true}>
+              <SideBarItem name="home" iconMaterial="home" />
+              <SideBarItem
+                name="settings"
+                iconMaterial="settings"
+                label="Settings"
+              />
+            </SideBar>
+          </View>
+        </>
       </BaraProvider>
     )
   }
@@ -45,10 +32,13 @@ export default class App extends Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    alignItems: 'stretch',
+    alignSelf: 'center',
     justifyContent: 'center',
-    alignItems: 'center',
+    flex: 1,
     backgroundColor: '#F5FCFF',
+    width: '100%',
+    height: '100%',
   },
   welcome: {
     fontSize: 20,

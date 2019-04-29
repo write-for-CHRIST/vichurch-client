@@ -1,14 +1,19 @@
 import { useInitStream } from 'bara'
-import { useTouchableOpacityStream } from 'bara-react'
+import { useComponentsStream } from 'bara-react'
+
+import { whenSideBarItemPress } from './components/SideBar'
 import { useWelcome } from './features/welcome'
 
 export const useStreams = () => {
   useInitStream()
-  useTouchableOpacityStream()
+  useComponentsStream()
 }
 
 export const useTriggers = () => {
   useWelcome()
+  whenSideBarItemPress('settings')(() => {
+    alert('Setting Pressed!')
+  })
 }
 
 export default () => {
