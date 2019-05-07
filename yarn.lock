@@ -2344,10 +2344,10 @@ bara-react-icons@1.1.0:
     bara-react "2.0.1"
     react-native-vector-icons "6.4.2"
 
-bara-react-yofi@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/bara-react-yofi/-/bara-react-yofi-1.0.0.tgz#454b7bb9eccace73502769a73f24b033ddaf25d2"
-  integrity sha512-uztJ1msB3lDevtrcNQjw2AgS9r6B3is1zgV4ZF/lVGEHrpBjR6vIotRdPeyRicQi5AGSXFgnDpVrGSPxqndqIA==
+bara-react-yofi@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/bara-react-yofi/-/bara-react-yofi-1.1.0.tgz#3ee27c4c73baeb756898d315f48a4e86f5747e8a"
+  integrity sha512-JPerIr/H9pfOEkNCmAd7+GtM6oi4fc4HoCapWYFd+RhezTL9ZkyGKPutkfGXqe48ZaLTozNKdlr3O/uqTKnaRg==
   dependencies:
     bara "2.4.0"
     bara-react "3.0.0"
