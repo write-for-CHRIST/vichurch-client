@@ -2,7 +2,12 @@ import { BaraProvider, TouchableOpacity, useBarnState } from 'bara-react'
 import React, { Component } from 'react'
 import { Platform, StyleSheet, Text, View } from 'react-native'
 
+import { ApolloProvider } from 'react-apollo'
+import { client } from './graphql'
+
 import { Octicons as Icon } from 'bara-react-icons/es'
+
+import { LoginScreen } from './features/login'
 
 import {
   SideBar,
@@ -19,41 +24,41 @@ export const App = () => {
   const [horizontal] = useBarnState('horizontal', false)
   return (
     <BaraProvider>
-      <>
-        <GlobalStyles />
-        <SideBarLayout
-          horizontal={horizontal}
-          horizontalSide="bottom"
-          verticalSide="left"
-        >
-          <SideBar name="sidebar-demo" horizontal={horizontal}>
-            <SideBarItem name="home" iconMaterial="home" label="Home" />
-            <SideBarSeparator horizontal={horizontal} />
-            <SideBarItem
-              name="light-bulb"
-              iconOcticon="light-bulb"
-              label="Light"
-            />
-            <SideBarSpace />
-            <SideBarSeparator horizontal={horizontal} />
-            <SideBarItem
-              name="rotate"
-              iconOcticon="screen-normal"
-              label="Rotate"
-            />
-            <SideBarItem
-              name="settings"
-              iconMaterial="settings"
-              label="Settings"
-            />
-          </SideBar>
-          <SideBarContent style={{ backgroundColor: '#ccc' }}>
-            <View>
-              <Text>Hello World</Text>
-            </View>
-          </SideBarContent>
-        </SideBarLayout>
-      </>
+      <ApolloProvider client={client}>
+        <>
+          <GlobalStyles />
+          <SideBarLayout
+            horizontal={horizontal}
+            horizontalSide="bottom"
+            verticalSide="left"
+          >
+            <SideBar name="sidebar-demo" horizontal={horizontal}>
+              <SideBarItem name="home" iconMaterial="home" label="Home" />
+              <SideBarSeparator horizontal={horizontal} />
+              <SideBarItem
+                name="light-bulb"
+                iconOcticon="light-bulb"
+                label="Light"
+              />
+              <SideBarSpace />
+              <SideBarSeparator horizontal={horizontal} />
+              <SideBarItem
+                name="rotate"
+                iconOcticon="screen-normal"
+                label="Rotate"
+              />
+              <SideBarItem
+                name="settings"
+                iconMaterial="settings"
+                label="Settings"
+              />
+            </SideBar>
+            <SideBarContent style={{ backgroundColor: '#ccc' }}>
+              <LoginScreen />
+            </SideBarContent>
+          </SideBarLayout>
+        </>
+      </ApolloProvider>
     </BaraProvider>
   )
 }
