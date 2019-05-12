@@ -1,6 +1,6 @@
-import { Text, TouchableOpacity, View } from 'bara-react'
+import { Text, TouchableOpacity, useBarnState, View } from 'bara-react'
 import React from 'react'
-import { compose, graphql } from 'react-apollo'
+import { compose, graphql, withApollo } from 'react-apollo'
 import { StyleSheet, TextInput } from 'react-native'
 
 import * as a from './graphql'
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     maxWidth: 750,
     backgroundColor: '#ccc',
     padding: 16,
-    borderRadius: 16,
+    borderRadius: 8,
     shadowColor: '#000000',
     shadowOffset: {
       width: 0,
@@ -36,17 +36,39 @@ const styles = StyleSheet.create({
   },
 })
 
-export interface LoginProps {}
+export interface LoginProps {
+  key: string
+}
 
 const LoginForm = (props: LoginProps) => {
+  const [username, setUsername] = useBarnState('form.login.username', '')
+  const [password, setPassword] = useBarnState('form.login.password', '')
+
+  const { key } = props
+
+  function updateUsername(newVal: string) {
+    setUsername(newVal)
+  }
+
+  function updatePassword(newVal: string) {
+    setPassword(newVal)
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-        <Text style={styles.inputLabel}>Username:</Text>
-        <TextInput style={styles.inputText} />
+        <Text style={styles.inputLabel}>Username: {username}</Text>
+        <TextInput onChangeText={updateUsername} style={styles.inputText} />
+      </View>
+      <View style={styles.inputContainer}>
+        <Text style={styles.inputLabel}>Password: {password}</Text>
+        <TextInput onChangeText={updatePassword} style={styles.inputText} />
       </View>
     </View>
   )
 }
 
-export default graphql(a.login)(LoginForm)
+export default compose(
+  graphql(a.login, { name: 'login' }),
+  graphql(a.translations),
+)(withApollo(LoginForm))

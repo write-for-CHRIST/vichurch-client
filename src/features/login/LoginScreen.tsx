@@ -27,7 +27,7 @@ export const LoginScreen = (props: LoginProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>Đăng Nhập</Text>
-      <LoginForm />
+      <LoginForm key="LOGIN" />
     </View>
   )
 }
